@@ -1,113 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>GA4 – The Kind Prince | Vocabulary Practice</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GA4 – The Kind Prince | Online Practice</title>
 <style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f5f6fa;
-  padding:20px;
-}
-h2{color:#5a3d8a;}
-.section{
-  background:#ffffff;
-  padding:15px;
-  margin-bottom:20px;
-  border-radius:10px;
-}
-.word-btn{
-  padding:8px 12px;
-  margin:5px;
-  border:none;
-  background:#e0d7f5;
-  cursor:pointer;
-  border-radius:6px;
-}
-.correct{color:green;font-weight:bold;}
-.wrong{color:red;font-weight:bold;}
-.letters button{
-  margin:4px;
-  padding:8px;
-}
-.answer-box{
-  font-size:18px;
-  margin-top:10px;
-}
+  :root{
+    --bg:#f4f5fb;
+    --card:#ffffff;
+    --ink:#1f2430;
+    --accent:#5a3d8a;
+    --good:#1a7f37;
+    --bad:#b42318;
+    --soft:#e7defa;
+    --soft2:#eef0ff;
+  }
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    background:linear-gradient(90deg, #6b4fb3, #4b2f88);
+    color:white;
+    padding:18px 16px;
+  }
+  header h1{
+    margin:0;
+    font-size:18px;
+    font-weight:700;
+  }
+  header p{
+    margin:6px 0 0;
+    opacity:.9;
+    font-size:13px;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:16px;
+  }
+  .card{
+    background:var(--card);
+    border-radius:14px;
+    padding:16px;
+    box-shadow:0 6px 18px rgba(20,20,40,.08);
+    margin-bottom:16px;
+  }
+  h2{
+    margin:0 0 10px;
+    color:var(--accent);
+    font-size:16px;
+  }
+  .small{
+    font-size:13px;
+    opacity:.85;
+    margin-top:6px;
+  }
+  .q{
+    padding:12px;
+    border-radius:12px;
+    background:var(--soft2);
+    margin:10px 0;
+  }
+  .q p{
+    margin:0 0 10px;
+    font-size:14px;
+  }
+  .btnrow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  button.choice{
+    border:0;
+    background:var(--soft);
+    padding:10px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+  }
+  button.choice:disabled{
+    cursor:not-allowed;
+    opacity:.8;
+  }
+  .feedback{
+    margin-top:10px;
+    font-weight:700;
+    font-size:14px;
+  }
+  .good{color:var(--good);}
+  .bad{color:var(--bad);}
+
+  /* Cloze-spell */
+  .progress{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin:8px 0 12px;
+    font-size:13px;
+    opacity:.9;
+  }
+  .sentence{
+    font-size:15px;
+    line-height:1.4;
+    margin:0 0 10px;
+  }
+  .blank{
+    display:inline-block;
+    min-width:140px;
+    padding:6px 10px;
+    border-radius:10px;
+    background:#fff;
+    border:2px dashed #c8b8f1;
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+  .tiles{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:10px 0;
+  }
+  button.tile{
+    border:0;
+    background:#e9ecff;
+    padding:10px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+    min-width:38px;
+    text-transform:lowercase;
+  }
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  button.action{
+    border:0;
+    background:#2f2a3a;
+    color:white;
+    padding:10px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+  }
+  button.action.secondary{
+    background:#6b6f7a;
+  }
+  button.action.ghost{
+    background:transparent;
+    color:#2f2a3a;
+    border:2px solid #d7d9e6;
+  }
+  .hint{
+    font-size:13px;
+    opacity:.85;
+    margin-top:6px;
+  }
 </style>
 </head>
 
 <body>
+<header>
+  <h1>GA4 Online Practice – The Kind Prince</h1>
+  <p>Part 1: Meaning Check (11) · Part 2: Cloze + Spell (7)</p>
+</header>
 
-<h2>GA4 Reading Practice – The Kind Prince</h2>
+<div class="wrap">
 
-<!-- PART 1 -->
-<div class="section">
-<h3>Part 1: Choose the Correct Word</h3>
+  <!-- PART 1 -->
+  <div class="card">
+    <h2>Part 1 — Choose the correct meaning (11)</h2>
+    <div id="p1"></div>
+    <div class="small">Tip: Click an answer. It will turn green (correct) or red (wrong).</div>
+  </div>
 
-<p>1. To divide things into different groups:</p>
-<button class="word-btn" onclick="check(this,false)">boast</button>
-<button class="word-btn" onclick="check(this,true)">separate</button>
+  <!-- PART 2+3 COMBINED -->
+  <div class="card">
+    <h2>Part 2 — Fill in the blank AND spell the word (7)</h2>
 
-<p>2. To say you will hurt someone:</p>
-<button class="word-btn" onclick="check(this,true)">threaten</button>
-<button class="word-btn" onclick="check(this,false)">challenge</button>
+    <div class="progress">
+      <div><strong id="qCount">Question 1 / 7</strong></div>
+      <div><span id="score">Score: 0</span></div>
+    </div>
 
-<p>3. Something that is honest and real:</p>
-<button class="word-btn" onclick="check(this,true)">truth</button>
-<button class="word-btn" onclick="check(this,false)">lie</button>
+    <p class="sentence" id="sentence"></p>
+    <div class="blank" id="blank">(spell here)</div>
 
-<p id="feedback"></p>
-</div>
+    <div class="tiles" id="tiles"></div>
 
-<!-- PART 2 -->
-<div class="section">
-<h3>Part 2: Spell the Word</h3>
-<p><strong>Spell:</strong> to talk with pride about yourself</p>
+    <div class="controls">
+      <button class="action" id="checkBtn">Check</button>
+      <button class="action secondary" id="resetBtn">Reset</button>
+      <button class="action ghost" id="showBtn">Show Answer</button>
+      <button class="action" id="nextBtn" disabled>Next</button>
+    </div>
 
-<div class="letters">
-<button onclick="add('b')">b</button>
-<button onclick="add('o')">o</button>
-<button onclick="add('a')">a</button>
-<button onclick="add('s')">s</button>
-<button onclick="add('t')">t</button>
-</div>
-
-<div class="answer-box" id="spellBox"></div>
-<button onclick="checkSpell()">Check</button>
-<button onclick="resetSpell()">Reset</button>
-
-<p id="spellFeedback"></p>
-</div>
-
-<!-- PART 3 -->
-<div class="section">
-<h3>Part 3: Use the Word in Context</h3>
-
-<p>The servants tried to __________ the king with false stories.</p>
-<button class="word-btn" onclick="check(this,true)">threaten</button>
-<button class="word-btn" onclick="check(this,false)">shoot</button>
-
-<p>The boy did not __________ about himself.</p>
-<button class="word-btn" onclick="check(this,true)">boast</button>
-<button class="word-btn" onclick="check(this,false)">challenge</button>
+    <div class="feedback" id="p2fb"></div>
+    <div class="hint" id="hint"></div>
+  </div>
 
 </div>
 
 <script>
-let spell = "";
-function add(l){spell+=l;document.getElementById("spellBox").innerText=spell;}
-function resetSpell(){spell="";document.getElementById("spellBox").innerText="";document.getElementById("spellFeedback").innerText="";}
-function checkSpell(){
-  if(spell==="boast"){
-    document.getElementById("spellFeedback").innerHTML="<span class='correct'>Correct!</span>";
+/* -----------------------------
+   PART 1 (11 meaning questions)
+   7 single words + 4 phrases
+------------------------------*/
+const part1 = [
+  {prompt:"To divide things into different groups:", correct:"separate", choices:["separate","boast"]},
+  {prompt:"To talk with pride about yourself:", correct:"boast", choices:["boast","challenge"]},
+  {prompt:"To say you will cause harm:", correct:"threaten", choices:["threaten","shoot"]},
+  {prompt:"Something honest and real:", correct:"truth", choices:["truth","lie"]},
+  {prompt:"Something that is not true:", correct:"lie", choices:["truth","lie"]},
+  {prompt:"To shoot at something (with a weapon):", correct:"shoot", choices:["shoot","separate"]},
+  {prompt:"To invite someone to compete or prove something:", correct:"challenge", choices:["challenge","threaten"]},
+
+  // phrases (4)
+  {prompt:"To point carefully before shooting:", correct:"take aim", choices:["take aim","make a plan"]},
+  {prompt:"To decide what you will do:", correct:"make a plan", choices:["make a plan","get rid of"]},
+  {prompt:"To remove something/someone:", correct:"get rid of", choices:["get rid of","put in charge of"]},
+  {prompt:"To give someone responsibility:", correct:"put in charge of", choices:["put in charge of","take aim"]},
+];
+
+function renderPart1(){
+  const host = document.getElementById("p1");
+  host.innerHTML = "";
+  part1.forEach((q, idx) => {
+    const box = document.createElement("div");
+    box.className = "q";
+    const p = document.createElement("p");
+    p.innerHTML = `<strong>${idx+1}.</strong> ${q.prompt}`;
+    box.appendChild(p);
+
+    const row = document.createElement("div");
+    row.className = "btnrow";
+
+    q.choices.forEach(ch => {
+      const b = document.createElement("button");
+      b.className = "choice";
+      b.textContent = ch;
+      b.onclick = () => {
+        // lock both choices after click
+        [...row.querySelectorAll("button")].forEach(x => x.disabled = true);
+        if(ch === q.correct){
+          b.style.background = "#b6f2c6";
+        }else{
+          b.style.background = "#f5b7b1";
+          // also show correct one green
+          [...row.querySelectorAll("button")].forEach(x=>{
+            if(x.textContent === q.correct) x.style.background = "#b6f2c6";
+          });
+        }
+      };
+      row.appendChild(b);
+    });
+
+    box.appendChild(row);
+    host.appendChild(box);
+  });
+}
+renderPart1();
+
+/* ------------------------------------
+   PART 2+3 Combined: Cloze + Spell (7)
+   Using the 7 single-word targets
+-------------------------------------*/
+const cloze = [
+  {word:"threaten", sentence:"The servants tried to ________ the king with false stories.", hint:"Meaning: say you will cause harm."},
+  {word:"boast", sentence:"The boy did not ________ about himself or his past.", hint:"Meaning: talk too proudly."},
+  {word:"separate", sentence:"The king asked the boy to ________ the wheat and barley.", hint:"Meaning: divide into groups."},
+  {word:"lie", sentence:"It is wrong to tell a ________ to hurt someone else.", hint:"Meaning: something not true."},
+  {word:"truth", sentence:"A good friend tells the ________, even when it is hard.", hint:"Meaning: something honest and real."},
+  {word:"challenge", sentence:"The jealous servants tried to ________ the boy with impossible tasks.", hint:"Meaning: test someone / invite to prove something."},
+  {word:"shoot", sentence:"The prince did not want to ________ the bird because it had babies.", hint:"Meaning: use a weapon to hit something."},
+];
+
+let qi = 0;
+let built = "";
+let score = 0;
+let checked = false;
+
+const sentenceEl = document.getElementById("sentence");
+const blankEl = document.getElementById("blank");
+const tilesEl = document.getElementById("tiles");
+const fbEl = document.getElementById("p2fb");
+const hintEl = document.getElementById("hint");
+const qCountEl = document.getElementById("qCount");
+const scoreEl = document.getElementById("score");
+const checkBtn = document.getElementById("checkBtn");
+const resetBtn = document.getElementById("resetBtn");
+const showBtn = document.getElementById("showBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function loadQ(){
+  checked = false;
+  built = "";
+  fbEl.textContent = "";
+  fbEl.className = "feedback";
+  nextBtn.disabled = true;
+  blankEl.textContent = "(spell here)";
+
+  const item = cloze[qi];
+  qCountEl.textContent = `Question ${qi+1} / ${cloze.length}`;
+  scoreEl.textContent = `Score: ${score}`;
+  hintEl.textContent = item.hint;
+
+  sentenceEl.innerHTML = item.sentence.replace("________", `<span class="blank">(spell here)</span>`);
+  // We keep a separate blank display below for clarity
+  // build tiles
+  const letters = shuffle(item.word.split(""));
+  tilesEl.innerHTML = "";
+  letters.forEach((L, idx) => {
+    const b = document.createElement("button");
+    b.className = "tile";
+    b.textContent = L;
+    b.onclick = () => {
+      if(checked) return;
+      built += L;
+      blankEl.textContent = built;
+      b.disabled = true;
+      b.style.opacity = 0.5;
+    };
+    tilesEl.appendChild(b);
+  });
+}
+
+function resetQ(){
+  if(checked) return; // keep reset only before check (clean workflow)
+  built = "";
+  blankEl.textContent = "(spell here)";
+  // re-enable tiles
+  [...tilesEl.querySelectorAll("button")].forEach(b=>{
+    b.disabled = false;
+    b.style.opacity = 1;
+  });
+}
+
+function checkQ(){
+  if(checked) return;
+  checked = true;
+
+  const ans = cloze[qi].word;
+  if(built === ans){
+    fbEl.innerHTML = `<span class="good">Correct ✅</span>`;
+    score += 1;
+    scoreEl.textContent = `Score: ${score}`;
+    nextBtn.disabled = false;
   }else{
-    document.getElementById("spellFeedback").innerHTML="<span class='wrong'>Try again. Answer: boast</span>";
+    fbEl.innerHTML = `<span class="bad">Not yet ❌</span> <span class="small">Click “Show Answer”, then try again next time.</span>`;
+    nextBtn.disabled = false; // let them move on even if wrong (GA-friendly)
   }
 }
-function check(btn,correct){
-  btn.style.background = correct ? "#b6f2c6" : "#f5b7b1";
+
+function showAnswer(){
+  const ans = cloze[qi].word;
+  blankEl.textContent = ans;
+  fbEl.innerHTML = `<span class="bad">Answer:</span> <strong>${ans}</strong>`;
+  // lock tiles
+  [...tilesEl.querySelectorAll("button")].forEach(b=>{
+    b.disabled = true;
+    b.style.opacity = 0.5;
+  });
+  checked = true;
+  nextBtn.disabled = false;
 }
+
+function nextQ(){
+  qi++;
+  if(qi >= cloze.length){
+    // finish screen
+    sentenceEl.innerHTML = `✅ Finished!`;
+    blankEl.textContent = `Final Score: ${score} / ${cloze.length}`;
+    tilesEl.innerHTML = "";
+    hintEl.textContent = "You can refresh the page to try again.";
+    fbEl.textContent = "";
+    checkBtn.disabled = true;
+    resetBtn.disabled = true;
+    showBtn.disabled = true;
+    nextBtn.disabled = true;
+    qCountEl.textContent = `Done`;
+    return;
+  }
+  loadQ();
+}
+
+checkBtn.onclick = checkQ;
+resetBtn.onclick = resetQ;
+showBtn.onclick = showAnswer;
+nextBtn.onclick = nextQ;
+
+loadQ();
 </script>
 
 </body>
