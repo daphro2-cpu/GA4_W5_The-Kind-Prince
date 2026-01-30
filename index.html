@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GA4 – The Kind Prince | Vocabulary Practice</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f6fa;
+  padding:20px;
+}
+h2{color:#5a3d8a;}
+.section{
+  background:#ffffff;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:10px;
+}
+.word-btn{
+  padding:8px 12px;
+  margin:5px;
+  border:none;
+  background:#e0d7f5;
+  cursor:pointer;
+  border-radius:6px;
+}
+.correct{color:green;font-weight:bold;}
+.wrong{color:red;font-weight:bold;}
+.letters button{
+  margin:4px;
+  padding:8px;
+}
+.answer-box{
+  font-size:18px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>GA4 Reading Practice – The Kind Prince</h2>
+
+<!-- PART 1 -->
+<div class="section">
+<h3>Part 1: Choose the Correct Word</h3>
+
+<p>1. To divide things into different groups:</p>
+<button class="word-btn" onclick="check(this,false)">boast</button>
+<button class="word-btn" onclick="check(this,true)">separate</button>
+
+<p>2. To say you will hurt someone:</p>
+<button class="word-btn" onclick="check(this,true)">threaten</button>
+<button class="word-btn" onclick="check(this,false)">challenge</button>
+
+<p>3. Something that is honest and real:</p>
+<button class="word-btn" onclick="check(this,true)">truth</button>
+<button class="word-btn" onclick="check(this,false)">lie</button>
+
+<p id="feedback"></p>
+</div>
+
+<!-- PART 2 -->
+<div class="section">
+<h3>Part 2: Spell the Word</h3>
+<p><strong>Spell:</strong> to talk with pride about yourself</p>
+
+<div class="letters">
+<button onclick="add('b')">b</button>
+<button onclick="add('o')">o</button>
+<button onclick="add('a')">a</button>
+<button onclick="add('s')">s</button>
+<button onclick="add('t')">t</button>
+</div>
+
+<div class="answer-box" id="spellBox"></div>
+<button onclick="checkSpell()">Check</button>
+<button onclick="resetSpell()">Reset</button>
+
+<p id="spellFeedback"></p>
+</div>
+
+<!-- PART 3 -->
+<div class="section">
+<h3>Part 3: Use the Word in Context</h3>
+
+<p>The servants tried to __________ the king with false stories.</p>
+<button class="word-btn" onclick="check(this,true)">threaten</button>
+<button class="word-btn" onclick="check(this,false)">shoot</button>
+
+<p>The boy did not __________ about himself.</p>
+<button class="word-btn" onclick="check(this,true)">boast</button>
+<button class="word-btn" onclick="check(this,false)">challenge</button>
+
+</div>
+
+<script>
+let spell = "";
+function add(l){spell+=l;document.getElementById("spellBox").innerText=spell;}
+function resetSpell(){spell="";document.getElementById("spellBox").innerText="";document.getElementById("spellFeedback").innerText="";}
+function checkSpell(){
+  if(spell==="boast"){
+    document.getElementById("spellFeedback").innerHTML="<span class='correct'>Correct!</span>";
+  }else{
+    document.getElementById("spellFeedback").innerHTML="<span class='wrong'>Try again. Answer: boast</span>";
+  }
+}
+function check(btn,correct){
+  btn.style.background = correct ? "#b6f2c6" : "#f5b7b1";
+}
+</script>
+
+</body>
+</html>
